@@ -122,6 +122,102 @@ class Kalkulator2Page extends StatelessWidget {
                         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                     ),
+                    SizedBox(width: 8),
+                    ElevatedButton(
+                      onPressed: () {
+                        String input1 = txtAngka1.text.trim();
+                        String input2 = txtAngka2.text.trim();
+
+                        // Cek kosong
+                        if (input1.isEmpty || input2.isEmpty) {
+                          Get.snackbar(
+                            "Error",
+                            "Kedua angka harus diisi!",
+                            snackPosition: SnackPosition.BOTTOM,
+                            backgroundColor: Colors.red,
+                            colorText: Colors.white,
+                          );
+                          return;
+                        }
+
+                        // Cek apakah angka valid
+                        int? angka1 = int.tryParse(input1);
+                        int? angka2 = int.tryParse(input2);
+
+                        if (angka1 == null || angka2 == null) {
+                          Get.snackbar(
+                            "Error",
+                            "Input harus berupa angka!",
+                            snackPosition: SnackPosition.BOTTOM,
+                            backgroundColor: Colors.red,
+                            colorText: Colors.white,
+                          );
+                          return;
+                        }
+
+                        controller.kali(angka1, angka2);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.teal,
+                        foregroundColor: Colors.white,
+                        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 15),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child: Text(
+                        "Kali",
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(width: 8),
+                    ElevatedButton(
+                      onPressed: () {
+                        String input1 = txtAngka1.text.trim();
+                        String input2 = txtAngka2.text.trim();
+
+                        // Cek kosong
+                        if (input1.isEmpty || input2.isEmpty) {
+                          Get.snackbar(
+                            "Error",
+                            "Kedua angka harus diisi!",
+                            snackPosition: SnackPosition.BOTTOM,
+                            backgroundColor: Colors.red,
+                            colorText: Colors.white,
+                          );
+                          return;
+                        }
+
+                        // Cek apakah angka valid
+                        int? angka1 = int.tryParse(input1);
+                        int? angka2 = int.tryParse(input2);
+
+                        if (angka1 == null || angka2 == null) {
+                          Get.snackbar(
+                            "Error",
+                            "Input harus berupa angka!",
+                            snackPosition: SnackPosition.BOTTOM,
+                            backgroundColor: Colors.red,
+                            colorText: Colors.white,
+                          );
+                          return;
+                        }
+
+                        controller.bagi(angka1, angka2);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.teal,
+                        foregroundColor: Colors.white,
+                        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 15),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child: Text(
+                        "Bagi",
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ],
                 ),
                 SizedBox(height: 8),
