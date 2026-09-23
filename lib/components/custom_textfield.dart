@@ -4,13 +4,13 @@ class CustomTextfield extends StatelessWidget {
   // Variabel yang diperlukan
   final TextEditingController txtController;
   final String myHint;
-  final IconData myIcon; // Buat ikon di kanan (email/password)
+  final IconData? myIcon; // Buat ikon di kanan (email/password)
 
   const CustomTextfield({
     super.key,
     required this.txtController,
     required this.myHint,
-    required this.myIcon,
+    this.myIcon,
   });
 
   @override
@@ -26,11 +26,13 @@ class CustomTextfield extends StatelessWidget {
         ),
         filled: true,
         fillColor: const Color(0xFF3E3E3E),
-        suffixIcon: Icon(
+        suffixIcon: myIcon != null
+            ? Icon(
           myIcon,
           color: const Color(0xFFA7A7A7),
           size: 20,
-        ),
+        )
+            : null,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(4),
           borderSide: BorderSide.none,
