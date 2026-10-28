@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:new_project_1/controller/list_makanan_controller.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Data dummy untuk item yang bisa di-swipe
-    final List<Map<String, dynamic>> headerItems = [
-      {'title': 'Belajar Flutter', 'color': Colors.blue},
-      {'title': 'Widget Dasar', 'color': Colors.green},
-      {'title': 'Layout', 'color': Colors.orange},
-      {'title': 'State Management', 'color': Colors.purple},
-      {'title': 'API & Database', 'color': Colors.red},
-    ];
+    // 1. Daftarkan controller
+    final ListMakananController controller = Get.put(ListMakananController());
 
     return Scaffold(
       backgroundColor: Colors.grey[100],
@@ -20,52 +16,95 @@ class Home extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // ================= HEADER =================
+            // Header
             Container(
-              padding: EdgeInsets.symmetric(vertical: 16),
+              padding: const EdgeInsets.symmetric(vertical: 16),
               color: Colors.white,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Judul header
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16),
                     child: Text(
-                      'Materi Belajar',
+                      'Menu Makanan',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                  SizedBox(height: 12),
-                  // List horizontal yang bisa di-swipe
+                  const SizedBox(height: 12),
+
+                  // List horizontal
                   SizedBox(
-                    height: 100,
+                    height: 140,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      padding: EdgeInsets.symmetric(horizontal: 12),
-                      itemCount: headerItems.length,
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      // 2. Ambil datanya dari controller
+                      itemCount: controller.listMakanan.length,
                       itemBuilder: (context, index) {
-                        final item = headerItems[index];
+                        // 3. Ambil item dari list controller
+                        final item = controller.listMakanan[index];
+
                         return Container(
                           width: 140,
-                          margin: EdgeInsets.symmetric(horizontal: 4),
+                          margin: const EdgeInsets.symmetric(horizontal: 4),
                           decoration: BoxDecoration(
-                            color: item['color'] as Color,
+                            color: Colors.white,
                             borderRadius: BorderRadius.circular(12),
-                          ),
-                          padding: EdgeInsets.all(12),
-                          child: Align(
-                            alignment: Alignment.bottomLeft,
-                            child: Text(
-                              item['title'] as String,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 14,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.05),
+                                blurRadius: 4,
+                                offset: const Offset(0, 2),
                               ),
-                            ),
+                            ],
+                          ),
+                          clipBehavior: Clip.antiAlias,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // Gambar
+                              Image.network(
+                                item.gambarUrl,
+                                height: 80,
+                                width: double.infinity,
+                                fit: BoxFit.cover,
+                                errorBuilder: (_, __, ___) => Container(
+                                  height: 80,
+                                  color: Colors.grey[300],
+                                  child: const Icon(Icons.broken_image),
+                                ),
+                              ),
+                              // Nama & Harga
+                              Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      item.namaMakanan,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 13,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 4),
+                                    Text(
+                                      'Rp ${item.hargaMakanan}',
+                                      style: TextStyle(
+                                        color: Colors.green[700],
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         );
                       },
@@ -75,9 +114,9 @@ class Home extends StatelessWidget {
               ),
             ),
 
-            // ================= BODY =================
+            // Body
             Expanded(
-              child: Center(
+              child: const Center(
                 child: Text(
                   "Ini Home Page",
                   style: TextStyle(fontSize: 16),

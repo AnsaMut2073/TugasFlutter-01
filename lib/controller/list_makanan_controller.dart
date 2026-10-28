@@ -35,13 +35,27 @@ class ListMakananController extends GetxController {
       namaMakanan: "Ayam Bakar",
       hargaMakanan: "35.000",
       gambarUrl:
-      "https://www.dapurkobe.co.id/wp-content/uploads/ayam-panggang.jpg",
+      "https://assets.unileversolutions.com/recipes-v2/257328.jpg",
       deskripsi:
       "Ayam bakar yang dimasak dengan penuh cinta, makan satu porsi aja ga cukup!",
       rating: 4.8,
       review: [
         "Bumbunya meresap sempurna",
         "Ada aroma smoky-nya, enak banget!",
+      ],
+    ),
+    MakananModel(
+      namaMakanan: "Burger",
+      hargaMakanan: "12.000",
+      gambarUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2ieoSpIYal4jeiQCPJw4JoEelnnhF0aV_JYBQcUL1rE1snw4ZUoMEglKv&s=10",
+      deskripsi:
+      "Burger dengan isian yang super juicy.",
+      rating: 4.8,
+      review: [
+        "Dagingnya tebel dan ada aroma smokynya, bikin nagih!",
+        "Seladanya segar!",
+        "Saran: wijennya banyakin.",
       ],
     ),
   ];

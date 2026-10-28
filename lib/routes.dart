@@ -4,6 +4,7 @@ import 'package:new_project_1/pages/list_makanan_page.dart';
 import 'package:new_project_1/pages/main_menu_page.dart';
 import 'package:new_project_1/pages/registration_page.dart';
 import 'package:new_project_1/pages/confirmreg_page.dart';
+import 'package:new_project_1/pages/menu_drawer_page.dart';
 
 import 'menu/history.dart';
 import 'menu/home.dart';
@@ -16,6 +17,7 @@ class Routes {
   static const String list_makanan = "/list_makanan";
   static const String detail_makanan = "/detail_makanan";
   static const String main_menu = "/main_menu";
+  static const String menu_drawer = "/menu_drawer";
   static const String home = "/home";
   static const String history = "/history";
   static const String profile = "/profile";
@@ -28,6 +30,7 @@ class Routes {
     GetPage(name: list_makanan, page: () => ListMakananPage()),
     GetPage(name: detail_makanan, page: () => DetailMakananPage()),
     GetPage(name: main_menu, page: () => MainMenuPage()),
+    GetPage(name: menu_drawer, page: () => MenuDrawerPage()),
     GetPage(name: home, page: () => Home()),
     GetPage(name: history, page: () => History()),
     GetPage(name: history, page: () => Profile())
