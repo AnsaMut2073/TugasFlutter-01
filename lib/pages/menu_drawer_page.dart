@@ -12,7 +12,7 @@ class MenuDrawerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // Obx bakal "ngintip" selectedIndex.value di dalam controller kamu
     return Obx(() => Scaffold(
-      appBar: AppBar(title: const Text("Aplikasi Makanan")),
+      appBar: AppBar(title: const Text("My App")),
 
       drawer: Drawer(
         child: ListView(
